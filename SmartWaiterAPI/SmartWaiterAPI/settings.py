@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'API',
 ]
 
 MIDDLEWARE = [
@@ -77,11 +78,11 @@ WSGI_APPLICATION = 'SmartWaiterAPI.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'webshopdatabase',
-        # 'USER': 'postgres',
-        # 'PASSWORD': 'kaas123',
-        # 'HOST': '45.77.139.57',
-        # 'PORT': '5432',
+        'NAME': 'SmartWaiterAPI',
+        'USER': 'postgres',
+        'PASSWORD': 'kaas123',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
