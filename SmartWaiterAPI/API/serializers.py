@@ -20,9 +20,16 @@ class OrderSerializer(serializers.ModelSerializer):
         fields = ('id', 'tablenumber', 'datetime')
 
 class OrderLineDetailSerializer(serializers.ModelSerializer):
+    name = serializers.SerializerMethodField('get_item_name')
+
+    def get_item_name(self, order_line):
+        object = Menu.objects.get(id=order_line.id)
+        name = object.name
+        return name
+
     class Meta:
         model = OrderLine
-        fields = ('amount', 'menuitem_id')
+        fields = ('amount', 'name', 'menuitem_id')
 
 class OrderDetailSerializer(serializers.ModelSerializer):
     lines = OrderLineDetailSerializer(source='orderlines_relation', many=True)

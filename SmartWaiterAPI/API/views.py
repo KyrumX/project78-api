@@ -51,7 +51,7 @@ class OrderList(generics.ListCreateAPIView):
 
     URL: api/orders/<int:id>
 """
-class OrderDetail(generics.RetrieveAPIView):
+class OrderDetail(generics.RetrieveUpdateAPIView):
     queryset = Order.objects.all()
     serializer_class = serializers.OrderDetailSerializer
 
