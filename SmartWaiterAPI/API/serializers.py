@@ -1,7 +1,7 @@
 #Default serializer for Menu
 from rest_framework import serializers
 
-from API.models import Menu, Order
+from API.models import Menu, Order, OrderLine
 
 
 class MenuSerializer(serializers.ModelSerializer):
@@ -19,7 +19,16 @@ class OrderSerializer(serializers.ModelSerializer):
         model = Order
         fields = ('id', 'tablenumber', 'datetime')
 
+class OrderLineDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrderLine
+        fields = ('amount', 'menuitem_id')
+
 class OrderDetailSerializer(serializers.ModelSerializer):
+    lines = OrderLineDetailSerializer(source='orderlines_relation', many=True)
+
     class Meta:
         model = Order
-        fields = ('id', 'tablenumber', 'datetime')
+        fields = ('id', 'tablenumber', 'datetime', 'lines')
+
+

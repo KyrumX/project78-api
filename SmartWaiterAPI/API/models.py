@@ -23,7 +23,7 @@ class Menu(models.Model):
 class OrderLine(models.Model):
     amount = models.PositiveIntegerField(validators=[MinValueValidator(1)])
     menuitem = models.ForeignKey(Menu, on_delete=models.CASCADE)
-    orderid = models.ForeignKey(Order, on_delete=models.CASCADE)
+    orderid = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='orderlines_relation')
 
     class Meta:
         verbose_name_plural = "Order lines"

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from rest_framework import generics
 
 from API import serializers
-from API.models import Menu, Order
+from API.models import Menu, Order, OrderLine
 
 """
     This is the menu list API View
@@ -39,7 +39,7 @@ class MenuDetail(generics.RetrieveAPIView):
 
     URL: api/orders/
 """
-class OrderList(generics.ListAPIView):
+class OrderList(generics.ListCreateAPIView):
     queryset = Order.objects.all()
     serializer_class = serializers.OrderSerializer
 
@@ -53,4 +53,6 @@ class OrderList(generics.ListAPIView):
 """
 class OrderDetail(generics.RetrieveAPIView):
     queryset = Order.objects.all()
-    serializer_class = serializers.MenuDetailSerializer
+    serializer_class = serializers.OrderDetailSerializer
+
+
