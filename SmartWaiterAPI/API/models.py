@@ -10,6 +10,9 @@ class Order(models.Model):
     class Meta:
         verbose_name_plural = "Orders"
 
+    def __str__(self):
+        return (str(self.id))
+
 class Menu(models.Model):
     name = models.CharField(max_length=500)
     type = models.CharField(max_length=500)
@@ -19,6 +22,9 @@ class Menu(models.Model):
 
     class Meta:
         verbose_name_plural = "Menu items"
+
+    def __str__(self):
+        return (str(self.name))
 
 class OrderLine(models.Model):
     amount = models.PositiveIntegerField(validators=[MinValueValidator(1)])

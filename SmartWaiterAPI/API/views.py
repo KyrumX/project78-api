@@ -51,8 +51,20 @@ class OrderList(generics.ListCreateAPIView):
 
     URL: api/orders/<int:id>
 """
-class OrderDetail(generics.RetrieveUpdateAPIView):
+class OrderDetailLine(generics.RetrieveUpdateAPIView):
     queryset = Order.objects.all()
     serializer_class = serializers.OrderDetailSerializer
 
 
+"""
+    This is the order list API View
+    it displays all the placed orderlines
+    in a list format including all
+    the details.
+    This endpoint allows: CREATING, GET
+
+    URL: api/orderlines/
+"""
+class OrderLineDetail(generics.ListCreateAPIView):
+    queryset = OrderLine.objects.all()
+    serializer_class = serializers.OrderLineDetailCreatorSerializer
