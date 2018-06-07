@@ -2,8 +2,11 @@ from django.shortcuts import render
 
 # Create your views here.
 from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from API import serializers
+from API.collections.order_operations import get_order_sum
 from API.models import Menu, Order, OrderLine
 
 """
@@ -68,3 +71,16 @@ class OrderDetailLine(generics.RetrieveUpdateAPIView):
 class OrderLineDetail(generics.ListCreateAPIView):
     queryset = OrderLine.objects.all()
     serializer_class = serializers.OrderLineDetailCreatorSerializer
+
+"""
+    This view will return the total amount of
+    money to be paid by the customer.
+
+    URL: api/orders/sum/<int:id>
+"""
+
+class OrderSum(APIView):
+    def get(self, request, pk):
+        sum = get_order_sum(pk)
+
+        return Response({'sum': sum})
