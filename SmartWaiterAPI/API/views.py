@@ -6,8 +6,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from API import serializers
+from API.collections.goeswellwith_operations import get_goeswellwith_items
 from API.collections.order_operations import get_order_sum
-from API.models import Menu, Order, OrderLine
+from API.models import Menu, Order, OrderLine, GoesWellWith
 
 """
     This is the menu list API View
@@ -84,3 +85,17 @@ class OrderSum(APIView):
         sum = get_order_sum(pk)
 
         return Response({'sum': sum})
+
+
+"""
+    This returns all the names of the items
+    that go well with a requested item.
+
+    URL: api/goeswellwith/<int:menuitem1>
+"""
+
+class GoesWellWithView(APIView):
+    def get(self, request, menuitem1):
+        items = get_goeswellwith_items(menuitem1)
+
+        return Response(items)

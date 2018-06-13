@@ -1,7 +1,7 @@
 #Default serializer for Menu
 from rest_framework import serializers
 
-from API.models import Menu, Order, OrderLine
+from API.models import Menu, Order, OrderLine, GoesWellWith
 
 
 class MenuSerializer(serializers.ModelSerializer):
@@ -55,5 +55,3 @@ class OrderDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = ('id', 'tablenumber', 'datetime', 'lines')
-
-

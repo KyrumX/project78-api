@@ -1,6 +1,6 @@
 from django.urls import path
 
-from API.views import MenuList, MenuDetail, OrderList, OrderDetailLine, OrderLineDetail, OrderSum
+from API.views import MenuList, MenuDetail, OrderList, OrderDetailLine, OrderLineDetail, OrderSum, GoesWellWithView
 
 urlpatterns = [
     path('menu/', MenuList.as_view()),
@@ -9,4 +9,5 @@ urlpatterns = [
     path('orders/<int:pk>', OrderDetailLine.as_view()),
     path('orders/sum/<int:pk>', OrderSum.as_view()),
     path('orderlines/', OrderLineDetail.as_view()),
+    path('goeswellwith/<int:menuitem1>', GoesWellWithView.as_view()),
 ]
