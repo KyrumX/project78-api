@@ -10,6 +10,6 @@ def get_goeswellwith_items(menuitem1):
         return result
     else:
         for e in entries:
-            result.append(Menu.objects.get(id=e.id).name)
+            result.append(Menu.objects.get(id=e.menuitem2_id).name)
 
     return result
