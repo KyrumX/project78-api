@@ -16,7 +16,7 @@ class Order(models.Model):
 class Menu(models.Model):
     name = models.CharField(max_length=500)
     type = models.CharField(max_length=500)
-    price = models.DecimalField(validators=[MinValueValidator(0.01)], decimal_places=2, max_digits=3)
+    price = models.DecimalField(validators=[MinValueValidator(0.01)], decimal_places=2, max_digits=5)
     allergy = models.TextField()
     description = models.TextField()
 
